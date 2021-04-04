@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/about', component: About }
+  { path: '/about', component: About }
 ];
 
 export default new VueRouter({ mode: 'history', routes });

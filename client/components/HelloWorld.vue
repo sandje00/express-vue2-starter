@@ -34,9 +34,9 @@
 export default {
   name: 'hello-world',
   props: {
-    msg: String
+    msg: { type: String, default: 'Hello World!' }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
