@@ -5,11 +5,12 @@
   "scripts": {
     "dev:client": "vue-cli-service serve",
     "build:client": "vue-cli-service build",
-    "dev:server": "nodemon ./server",
+    "dev:server": "nodemon ./server | bunyan",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bunyan": "^1.8.15",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
