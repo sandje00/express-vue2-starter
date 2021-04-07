@@ -46,8 +46,9 @@ const models = {
 function defineModel(Model, connection = sequelize) {
   const { DataTypes } = connection.Sequelize;
   const fields = invoke(Model, 'fields', DataTypes, connection) || {};
+  const hooks = invoke(Model, 'hooks', DataTypes, connection) || {};
   const options = invoke(Model, 'options') || {};
-  Object.assign(options, { sequelize: connection });
+  Object.assign(options, { sequelize: connection, hooks });
   return Model.init(fields, options);
 }
 
