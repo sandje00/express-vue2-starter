@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const cors = require('cors');
+const database = require('./shared/database');
 const express = require('express');
 const helmet = require('helmet');
 const { middleware: logRequests } = require('./shared/logger');
@@ -18,3 +19,5 @@ app.use('/api/v1', logRequests, router);
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+database.initialize();

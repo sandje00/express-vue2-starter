@@ -6,7 +6,15 @@
     "dev:client": "vue-cli-service serve",
     "build:client": "vue-cli-service build",
     "dev:server": "nodemon ./server | bunyan",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "db:create": "sequelize-cli db:create && sequelize-cli db:migrate",
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:seed:undo": "sequelize-cli db:seed:undo:all",
+    "db:seed:create": "sequelize-cli seed:generate",
+    "db:reset": "sequelize-cli db:drop && npm run db:create",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate:undo": "sequelize-cli db:migrate:undo",
+    "db:migration:create": "sequelize-cli migration:generate"
   },
   "dependencies": {
     "axios": "^0.21.1",
