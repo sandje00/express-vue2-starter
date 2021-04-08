@@ -79,6 +79,10 @@ class User extends Model {
       .then(salt => bcrypt.hash(this.password, salt))
       .then(pw => { this.password = pw; });
   }
+
+  verifyEmail() {
+    console.log('Email verification');
+  }
 }
 
 module.exports = User;

@@ -3,7 +3,8 @@
 const ctrl = require('./user.controller');
 const router = require('express').Router();
 
-router.get('/', ctrl.helloWorld);
+router
+  .post('/register', ctrl.register);
 
 module.exports = {
   path: '/users',
