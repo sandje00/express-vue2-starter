@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/about">About</router-link>
+    <router-link to="/register">Register</router-link>
     <img alt="Vue logo" src="./assets/logo.png">
     <hello-world :msg="message" />
     <router-view />
@@ -9,16 +9,9 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
-import usersApi from './api/users';
-
 export default {
   name: 'app-main',
-  data: () => ({ message: '' }),
-  created() {
-    usersApi
-      .helloWorld()
-      .then(({ data }) => { this.message = data; });
-  },
+  data: () => ({ message: 'Hello World!' }),
   components: {
     HelloWorld
   }
