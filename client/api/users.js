@@ -1,11 +1,13 @@
 import client from './client';
 
-const url = { helloWorld: '/users' };
+const url = {
+  register: '/users/register'
+};
 
-function helloWorld() {
-  return client.get(url.helloWorld);
+function register(userData) {
+  client.post(url.register, userData);
 }
 
 export default {
-  helloWorld
+  register
 };
