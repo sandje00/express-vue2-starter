@@ -1,0 +1,78 @@
+$colors: (
+  // Brand colors:
+  "primary": #2195f2,
+  // "secondary": #xxxxxx,
+  "accent": #f9f871,
+  // System colors:
+  "success": #14d364,
+  "error": #ff3030,
+  "info": #56dfcc,
+  // Tints and shades
+  "primary-light-100": #51abf5,
+  "error-light-900": #ffeaea,
+  "error-light-700": #ffc0c0,
+  // Neutrals:
+  "white": #fff,
+  "black": #000,
+  "grey-light-900": #f3f3f3,
+  "grey-light-800": #eceff1,
+  "grey-light-700": #b0bec5,
+  "grey-light-400": #787878,
+  "admin-sidebar": #0e2029,
+  "admin-profile": #182d37,
+  "admin-grey": #2b3e48,
+  "table-header-content": #455a64,
+  "grey-dark-100": #aaa,
+  "grey-dark-200": #78909c,
+  "grey-dark-300": #455a64,
+  "grey-dark-400": #2f3538,
+  "grey-dark-800": #333,
+  "grey-dark-900": #1a1a1a,
+  "grey-dark": #121212
+);
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  --color-background: var(--color-grey-light-800);
+  --color-background-sidebar: var(--color-white);
+  --color-background-auth-form: var(--color-white);
+  --color-border-sidebar: var(--color-grey-light-900);
+  --color-border-input: var(--color-grey-light-700);
+  --color-text-tag: var(--color-grey-light-400);
+  --color-text-input: var(--color-grey-light-400);
+  --color-background-tag: var(--color-grey-light-800);
+  --color-background-error: var(--color-error-light-900);
+  --color-neutral: var(--color-grey-light-700);
+  --color-input: var(--color-grey-dark-900);
+}
+
+.dark {
+  --color-background: var(--color-grey-dark-900);
+  --color-background-sidebar: var(--color-grey-dark-400);
+  --color-background-auth-form: var(--color-grey-dark-400);
+  --color-border-sidebar: var(--color-grey-dark-400);
+  --color-border-input: var(--color-grey-dark-100);
+  --color-text-tag: var(--color-grey-light-900);
+  --color-text-input: var(--color-grey-light-800);
+  --color-background-tag: var(--color-grey-dark-300);
+  --color-background-error: var(--color-error-light-700);
+  --color-neutral: var(--color-white);
+  --color-input: var(--color-grey-light-800);
+
+  color: var(--color-white);
+
+  p {
+    color: var(--color-white);
+  }
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-neutral {
+  color: var(--color-neutral);
+}
