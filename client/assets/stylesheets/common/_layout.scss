@@ -1,0 +1,139 @@
+$spacings: (
+  "xxs": 0.125rem,
+  "xs": 0.25rem,
+  "s": 0.5rem,
+  "m": 1rem,
+  "l": 1.25rem,
+  "xl", 1.5rem
+);
+
+:root {
+  @each $name, $value in $spacings {
+    --spc-#{$name}: #{$value};
+  }
+
+  --measure-xs: 14.75rem;
+  --measure-s: 17.5rem;
+  --measure-m: 23.75rem;
+  --measure-l: 30rem;
+  --measure-xxl: 75rem;
+  --z-modal: 500;
+}
+
+@each $name, $value in $spacings {
+  .ma-#{$name} {
+    margin-top: var(--spc-#{$name});
+    margin-right: var(--spc-#{$name});
+    margin-bottom: var(--spc-#{$name});
+    margin-left: var(--spc-#{$name});
+  }
+  .mx-#{$name} {
+    margin-right: var(--spc-#{$name});
+    margin-left: var(--spc-#{$name});
+  }
+  .my-#{$name} {
+    margin-top: var(--spc-#{$name});
+    margin-bottom: var(--spc-#{$name});
+  }
+  .mt-#{$name} {
+    margin-top: var(--spc-#{$name});
+  }
+  .mr-#{$name} {
+    margin-right: var(--spc-#{$name});
+  }
+  .mb-#{$name} {
+    margin-bottom: var(--spc-#{$name});
+  }
+  .ml-#{$name} {
+    margin-left: var(--spc-#{$name});
+  }
+  .pa-#{$name} {
+    padding-top: var(--spc-#{$name});
+    padding-right: var(--spc-#{$name});
+    padding-bottom: var(--spc-#{$name});
+    padding-left: var(--spc-#{$name});
+  }
+  .px-#{$name} {
+    padding-right: var(--spc-#{$name});
+    padding-left: var(--spc-#{$name});
+  }
+  .py-#{$name} {
+    padding-top: var(--spc-#{$name});
+    padding-bottom: var(--spc-#{$name});
+  }
+  .pt-#{$name} {
+    padding-top: var(--spc-#{$name});
+  }
+  .pr-#{$name} {
+    padding-right: var(--spc-#{$name});
+  }
+  .pb-#{$name} {
+    padding-bottom: var(--spc-#{$name});
+  }
+  .pl-#{$name} {
+    padding-left: var(--spc-#{$name});
+  }
+}
+
+.flex-h {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.flex-v {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-space-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-space-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
