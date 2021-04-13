@@ -37,6 +37,7 @@
     "@babel/eslint-parser": "^7.13.14",
     "@babel/eslint-plugin": "^7.13.10",
     "@extensionengine/eslint-config": "^2.0.0",
+    "@extensionengine/stylelint-config": "^1.1.1",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
@@ -53,6 +54,7 @@
     "nodemon": "^2.0.7",
     "sass-loader": "^11.0.1",
     "sequelize-cli": "^6.2.0",
+    "stylelint": "^13.12.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
