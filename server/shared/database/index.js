@@ -7,7 +7,11 @@ const path = require('path');
 const pick = require('lodash/pick');
 const { Sequelize } = require('sequelize');
 const Umzug = require('umzug');
+
+/* eslint-disable require-sort/require-sort */
+const Item = require('../../item/item.model');
 const User = require('../../user/user.model');
+/* eslint-enable */
 
 const sequelize = new Sequelize(config.url, config);
 const isProduction = process.env.NODE_ENV === 'production';
@@ -40,6 +44,7 @@ function initialize() {
 }
 
 const models = {
+  Item: defineModel(Item),
   User: defineModel(User)
 };
 
