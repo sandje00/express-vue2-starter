@@ -1,8 +1,10 @@
 'use strict';
 
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { Model } = require('sequelize');
-const { auth: { saltRounds } } = require('../config');
+const pick = require('lodash/pick');
+const { auth: { saltRounds, secret } } = require('../config');
 
 class User extends Model {
   static fields({ INTEGER, STRING, ENUM, BOOLEAN, DATE }) {
@@ -78,6 +80,11 @@ class User extends Model {
     return bcrypt.genSalt(saltRounds)
       .then(salt => bcrypt.hash(this.password, salt))
       .then(pw => { this.password = pw; });
+  }
+
+  createToken(options = {}) {
+    const payload = pick(this, ['id', 'email', 'role']);
+    return jwt.sign(payload, secret, options);
   }
 
   verifyEmail() {

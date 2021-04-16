@@ -1,14 +1,11 @@
 'use strict';
 
-const { AUTH_SALT_ROUNDS } = process.env;
+const {
+  AUTH_SALT_ROUNDS,
+  AUTH_JWT_SECRET
+} = process.env;
 
 module.exports = {
-  ...readConfig()
+  saltRounds: parseInt(AUTH_SALT_ROUNDS),
+  secret: AUTH_JWT_SECRET
 };
-
-function readConfig() {
-  if (AUTH_SALT_ROUNDS) return { saltRounds: parseInt(AUTH_SALT_ROUNDS) };
-  if (!AUTH_SALT_ROUNDS) {
-    throw new Error('Missing auth salt rounds in the config');
-  }
-}
