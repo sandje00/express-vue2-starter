@@ -36,6 +36,11 @@ class Comment extends Model {
       timestamps: true
     };
   }
+
+  static associate({ Item, User }) {
+    this.belongsTo(Item, { foreignKey: { name: 'itemId', field: 'item_id' } });
+    this.belongsTo(User, { foreignKey: { name: 'userId', field: 'user_id' } });
+  }
 }
 
 module.exports = Comment;

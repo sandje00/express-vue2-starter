@@ -75,7 +75,9 @@ class User extends Model {
     };
   }
 
-  static associate(/* models */) {
+  static associate({ Item: Items, Comment: Comments }) {
+    this.hasMany(Items, { foreignKey: { name: 'userId', field: 'user_id' } });
+    this.hasMany(Comments, { foreignKey: { name: 'userId', field: 'user_id' } });
   }
 
   async _hashPassword() {

@@ -36,8 +36,9 @@ class Item extends Model {
     };
   }
 
-  static associate({ User }) {
+  static associate({ User, Item: Items }) {
     this.belongsTo(User, { foreignKey: { name: 'userId', field: 'user_id' } });
+    this.hasMany(Items, { foreignKey: { name: 'itemId', field: 'item_id' } });
   }
 }
 
