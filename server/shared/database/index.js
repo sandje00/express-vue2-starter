@@ -9,8 +9,9 @@ const { Sequelize } = require('sequelize');
 const Umzug = require('umzug');
 
 /* eslint-disable require-sort/require-sort */
-const Item = require('../../item/item.model');
 const User = require('../../user/user.model');
+const Item = require('../../item/item.model');
+const Comment = require('../../comment/comment.model');
 /* eslint-enable */
 
 const sequelize = new Sequelize(config.url, config);
@@ -44,8 +45,9 @@ function initialize() {
 }
 
 const models = {
+  User: defineModel(User),
   Item: defineModel(Item),
-  User: defineModel(User)
+  Comment: defineModel(Comment)
 };
 
 function defineModel(Model, connection = sequelize) {
