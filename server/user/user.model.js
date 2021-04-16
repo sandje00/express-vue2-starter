@@ -1,10 +1,13 @@
 'use strict';
 
+const Audience = require('../shared/auth/audience');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { logger } = require('../shared/logger');
 const { Model } = require('sequelize');
 const pick = require('lodash/pick');
 const { auth: { saltRounds, secret } } = require('../config');
+const { sendVerificationEmail } = require('../shared/mail');
 
 class User extends Model {
   static fields({ INTEGER, STRING, ENUM, BOOLEAN, DATE }) {
@@ -88,7 +91,15 @@ class User extends Model {
   }
 
   verifyEmail() {
-    console.log('Email verification');
+    const token = this.createToken({
+      audience: Audience.Scope.Setup,
+      expiresIn: '5 days'
+    });
+
+    return sendVerificationEmail(token, this.email)
+      .catch(err => {
+        logger.error('An error has occured sending verification email:', err.message);
+      });
   }
 }
 
