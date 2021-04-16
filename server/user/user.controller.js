@@ -2,6 +2,7 @@
 
 const { auth: { secret } } = require('../config');
 const Audience = require('../shared/auth/audience');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { UniqueConstraintError } = require('sequelize');
 const User = require('./user.model');
@@ -62,7 +63,29 @@ async function verify(req, res) {
   });
 }
 
+async function login(req, res) {
+  const { username, password } = req.body;
+  const user = await User.findOne({ where: { username } });
+  if (!user) {
+    return res.status(401).send({
+      error: 'Username and password are not matching'
+    });
+  }
+  const status = await bcrypt.compare(password, user.password);
+  if (!status) {
+    return res.status(401).send({
+      error: 'Username and password are not matching'
+    });
+  }
+  const token = user.createToken({
+    audience: Audience.Scope.Access,
+    expiresIn: '5 days'
+  });
+  return res.json({ token });
+}
+
 module.exports = {
   register,
-  verify
+  verify,
+  login
 };
