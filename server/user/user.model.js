@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const { logger } = require('../shared/logger');
 const { Model } = require('sequelize');
 const pick = require('lodash/pick');
+const role = require('../../common/role');
+const values = require('lodash/values');
 const { auth: { saltRounds, secret } } = require('../config');
 const { sendVerificationEmail } = require('../shared/mail');
 
@@ -38,9 +40,8 @@ class User extends Model {
         allowNull: false
       },
       role: {
-        type: ENUM,
-        values: ['USER', 'ADMIN'],
-        defaultValue: 'USER'
+        type: ENUM(values(role)),
+        defaultValue: role.USER
       },
       active: {
         type: BOOLEAN,
