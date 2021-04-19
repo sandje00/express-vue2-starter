@@ -33,8 +33,8 @@ module.exports = {
   },
   {
     uniqueKeys: {
-      post_tags_unique: {
-        fields: ['tag_id', 'post_id']
+      user_items_unique: {
+        fields: ['user_id', 'item_id']
       }
     }
   }),
