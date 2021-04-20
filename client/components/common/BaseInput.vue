@@ -1,8 +1,8 @@
 <template>
   <input
     v-on="listeners"
-    @input="emit('input', $event.target.value)"
-    @change="emit('change', $event.target.value)"
+    @input="$emit('input', $event.target.value)"
+    @change="$emit('change', $event.target.value)"
     :value="value"
     class="input">
 </template>
@@ -21,3 +21,24 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.input {
+  color: var(--color-input);
+  font-size: inherit;
+  background: none;
+  border: none;
+
+  &::placeholder {
+    color: var(--color-grey-light-700);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.error {
+  color: var(--color-error);
+}
+</style>
