@@ -1,36 +1,45 @@
 <template>
   <div>
     <div v-if="successMessage">{{ successMessage }}</div>
-    <form
-      v-else
-      @submit.prevent="handleSubmit(register)">
-      <base-field
-        v-model="username"
-        type="text"
-        placeholder="Username" />
-      <base-field
-        v-model="email"
-        type="text"
-        placeholder="E-mail" />
-      <base-field
+    <!-- eslint-disable-next-line vue/valid-v-on -->
+    <base-form v-else @submit="register">
+      <form-field
+        v-model.trim="username"
+        name="Username"
+        :rules="{ required: true }"
+        type="text" />
+      <form-field
+        v-model.trim="email"
+        name="E-mail"
+        :rules="{ required: true, email: true }"
+        type="text" />
+      <form-field
         v-model="password"
-        type="password"
-        placeholder="Password" />
-      <base-field
-        v-model="password"
-        type="password"
-        placeholder="Repeat password" />
+        name="Password"
+        :rules="{ required: true, min: { length: 8 } }"
+        type="password" />
+      <form-field
+        v-model="repeat"
+        name="Repeat password"
+        :rules="{ required: true, confirmation: { target: '@password' } }"
+        type="password" />
       <span>{{ error }}</span>
-      <base-button type="submit" text="Register" />
-    </form>
+      <base-button
+        type="submit"
+        text="Register"
+        class="register-btn mt-m"
+        primary
+        rounded />
+    </base-form>
   </div>
 </template>
 
 <script>
 import BaseButton from './common/BaseButton';
-import BaseField from './common/BaseField';
+import BaseForm from './common/BaseForm';
+import FormField from './common/FormField';
 import pick from 'lodash/pick';
-import usersApi from '../api/users';
+// import usersApi from '../api/users';
 
 export default {
   name: 'register-view',
@@ -44,16 +53,17 @@ export default {
   }),
   methods: {
     register() {
-      usersApi
+      console.log(pick(this, ['username', 'email', 'password']));
+      /* usersApi
         .register(pick(this, ['username', 'email', 'password']))
         .then(({ data: { message } }) => {
           this.successMessage = message;
         })
         .catch(({ status, data: { error } }) => {
           this.error = status === 400 ? error : 'Something went wrong. Try again.';
-        });
+        }); */
     }
   },
-  components: { BaseButton, BaseField }
+  components: { BaseButton, BaseForm, FormField }
 };
 </script>
