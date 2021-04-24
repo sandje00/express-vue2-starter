@@ -14,6 +14,7 @@
 
 <script>
 import BaseField from './BaseField';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
   name: 'form-field',
@@ -22,6 +23,6 @@ export default {
     rules: { type: [String, Object], required: true },
     type: { type: String, required: true }
   },
-  components: { BaseField }
+  components: { BaseField, ValidationProvider }
 };
 </script>

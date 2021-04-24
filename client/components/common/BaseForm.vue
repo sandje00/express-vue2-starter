@@ -9,12 +9,15 @@
 </template>
 
 <script>
+import { ValidationObserver } from 'vee-validate';
+
 export default {
   name: 'base-form',
   methods: {
     submit() {
       this.$emit('submit');
     }
-  }
+  },
+  components: { ValidationObserver }
 };
 </script>
