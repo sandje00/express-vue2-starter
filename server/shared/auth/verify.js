@@ -14,7 +14,8 @@ function verify(req, res, next) {
         message: 'Token is invalid'
       });
     }
-    next({ id, aud });
+    req.id = id;
+    next();
   } catch (err) {
     if (err instanceof jwt.JsonWebTokenError) {
       return res.status(400).send({
