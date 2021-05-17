@@ -62,7 +62,7 @@ class User extends Model {
   static hooks() {
     return {
       beforeCreate(user) {
-        return user._hashPassword;
+        return user._hashPassword();
       }
     };
   }
