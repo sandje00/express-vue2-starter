@@ -8,7 +8,7 @@ const TOKEN_INVALID = 'Token is invalid';
 const TOKEN_EXPIRED = 'Token is expired';
 
 function verify(req, res, next) {
-  const { token } = req.body;
+  const { token } = req.params;
 
   try {
     const { id, aud } = jwt.verify(token, secret);
