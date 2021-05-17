@@ -1,6 +1,6 @@
 'use strict';
 
-const { Model } = require('Sequelize');
+const { Model } = require('sequelize');
 
 class Item extends Model {
   static fields({ INTEGER, STRING, DATE }) {
