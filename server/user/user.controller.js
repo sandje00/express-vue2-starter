@@ -1,7 +1,6 @@
 'use strict';
 
 const Audience = require('../shared/auth/audience');
-const bcrypt = require('bcrypt');
 const { UniqueConstraintError } = require('sequelize');
 const User = require('./user.model');
 
@@ -51,7 +50,7 @@ async function login(req, res) {
       error: 'Username and password are not matching'
     });
   }
-  const result = await bcrypt.compare(password, user.password);
+  const result = await user.passwordCompare(password);
   if (!result) {
     return res.status(401).send({
       error: 'Username and password are not matching'
