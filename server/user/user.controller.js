@@ -51,8 +51,8 @@ async function login(req, res) {
       error: 'Username and password are not matching'
     });
   }
-  const status = await bcrypt.compare(password, user.password);
-  if (!status) {
+  const result = await bcrypt.compare(password, user.password);
+  if (!result) {
     return res.status(401).send({
       error: 'Username and password are not matching'
     });

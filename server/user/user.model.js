@@ -89,6 +89,11 @@ class User extends Model {
       .then(pw => { this.password = pw; });
   }
 
+  async passwordCompare(password) {
+    const result = bcrypt.compare(password, this.password);
+    return result;
+  }
+
   createToken(options = {}) {
     const payload = pick(this, ['id', 'email', 'role']);
     return jwt.sign(payload, secret, options);
