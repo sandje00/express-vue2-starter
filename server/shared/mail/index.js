@@ -1,7 +1,7 @@
 'use strict';
 
 const { CLIENT_URL } = process.env;
-const { mail: { email: config, sender } } = require('../../config');
+const { mail: { sender, email: config } } = require('../../config');
 const nodemailer = require('nodemailer');
 
 const transport = nodemailer.createTransport(config);
