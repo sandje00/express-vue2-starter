@@ -90,7 +90,7 @@ class User extends Model {
   }
 
   async passwordCompare(password) {
-    const result = bcrypt.compare(password, this.password);
+    const result = await bcrypt.compare(password, this.password);
     return result;
   }
 
