@@ -26,6 +26,6 @@ module.exports = {
     return passport.initialize(options);
   },
   authenticate(strategy, options = {}) {
-    return passport.authenticate(strategy, options);
+    return passport.authenticate(strategy, { ...options, failWithError: true });
   }
 };
