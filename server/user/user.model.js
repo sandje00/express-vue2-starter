@@ -1,5 +1,9 @@
 'use strict';
 
+const {
+  sendResetTokenEmail,
+  sendVerificationEmail
+} = require('../shared/mail');
 const Audience = require('../shared/auth/audience');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -9,7 +13,6 @@ const pick = require('lodash/pick');
 const role = require('../../common/role');
 const values = require('lodash/values');
 const { auth: { saltRounds, secret } } = require('../config');
-const { sendVerificationEmail } = require('../shared/mail');
 
 class User extends Model {
   static fields({ INTEGER, STRING, ENUM, BOOLEAN, DATE }) {
@@ -108,6 +111,18 @@ class User extends Model {
     return sendVerificationEmail(token, this.email)
       .catch(err => {
         logger.error('An error has occured sending verification email:', err.message);
+      });
+  }
+
+  sendResetToken() {
+    const token = this.createToken({
+      audience: Audience.Scope.Setup,
+      expiresIn: '5 days'
+    });
+
+    return sendResetTokenEmail(token, this.email)
+      .catch(err => {
+        logger.error('An error has occured sending reset token email:', err.message);
       });
   }
 }
