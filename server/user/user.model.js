@@ -66,6 +66,11 @@ class User extends Model {
     return {
       beforeCreate(user) {
         return user._hashPassword();
+      },
+      beforeUpdate(user) {
+        return user.changed('password')
+          ? user._hashPassword()
+          : Promise.resolve(user);
       }
     };
   }
