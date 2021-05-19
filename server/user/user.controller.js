@@ -63,8 +63,14 @@ async function login(req, res) {
   return res.json({ token });
 }
 
+async function getAll(req, res) {
+  const users = await User.findAll();
+  res.status(200).json(users);
+}
+
 module.exports = {
   register,
   verify,
-  login
+  login,
+  getAll
 };

@@ -13,6 +13,9 @@ const jwtOptions = {
 };
 
 passport.use(new JwtStrategy(jwtOptions, (payload, done) => {
+  console.log('**********');
+  console.log(payload);
+  console.log('**********');
   return User.findByPk(payload.id)
     .then(user => done(null, user || false))
     .catch(err => done(err, false));
