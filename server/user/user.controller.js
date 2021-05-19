@@ -66,7 +66,7 @@ async function login(req, res) {
 async function forgotPassword({ body }, res) {
   const { email } = body;
   try {
-    const user = User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email } });
     user.sendResetToken();
   } catch (err) {
     return res.status(404).send({
