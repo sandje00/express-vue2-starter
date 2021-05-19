@@ -63,8 +63,24 @@ async function login(req, res) {
   return res.json({ token });
 }
 
+async function forgotPassword({ body }, res) {
+  const { email } = body;
+  try {
+    const user = User.findOne({ where: { email } });
+    user.sendResetToken();
+  } catch (err) {
+    return res.status(404).send({
+      message: 'User not found'
+    });
+  }
+  return res.status(200).json({
+    message: 'Password reset email has been sent. Check your email to proceed.'
+  });
+}
+
 module.exports = {
   register,
   verify,
-  login
+  login,
+  forgotPassword
 };
