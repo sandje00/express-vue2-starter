@@ -2,26 +2,30 @@
 
 const { auth: { secret } } = require('../../config');
 const Audience = require('./audience');
+const { StatusCodes: BAD_REQUEST } = require('http-status-codes');
+const HttpError = require('../httpError');
 const jwt = require('jsonwebtoken');
 
-const TOKEN_INVALID = 'Token is invalid';
-const TOKEN_EXPIRED = 'Token is expired';
+const msg = {
+  TOKEN_INVALID: 'Token is invalid',
+  TOKEN_EXPIRED: 'Token is expired'
+};
 
 function verify(req, res, next) {
   const token = req.params.token || req.body.token;
   try {
     const { id, aud } = jwt.verify(token, secret);
     if (aud !== Audience.Scope.Setup) {
-      return res.status(400).send({ message: TOKEN_INVALID });
+      throw new HttpError(BAD_REQUEST, msg.TOKEN_INVALID);
     }
     req.id = id;
     next();
   } catch (err) {
     if (err instanceof jwt.JsonWebTokenError) {
-      return res.status(400).send({ message: TOKEN_INVALID });
+      throw new HttpError(BAD_REQUEST, msg.TOKEN_INVALID);
     }
     if (err instanceof jwt.TokenExpiredError) {
-      return res.status(400).send({ message: TOKEN_EXPIRED });
+      throw new HttpError(BAD_REQUEST, msg.TOKEN_EXPIRED);
     }
     throw err;
   }
