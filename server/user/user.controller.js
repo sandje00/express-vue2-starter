@@ -78,9 +78,14 @@ async function forgotPassword({ body }, res) {
   });
 }
 
+async function resetPassword({ body }, res) {
+
+}
+
 module.exports = {
   register,
   verify,
   login,
-  forgotPassword
+  forgotPassword,
+  resetPassword
 };
