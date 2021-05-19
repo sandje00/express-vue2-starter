@@ -78,8 +78,18 @@ async function forgotPassword({ body }, res) {
   });
 }
 
-async function resetPassword({ body }, res) {
-
+async function resetPassword({ body: { password }, id }, res) {
+  const user = await User.findByPk(id);
+  if (!user) {
+    return res.status(404).send({
+      message: 'We are unable to find user for this token'
+    });
+  }
+  user.password = password;
+  await user.save();
+  return res.status(200).json({
+    message: 'Your password has been reset successfully.'
+  });
 }
 
 module.exports = {
