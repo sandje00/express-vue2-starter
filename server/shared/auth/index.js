@@ -7,15 +7,12 @@ const passport = require('passport');
 const { User } = require('../database');
 
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
   secretOrKey: secret,
-  audience: Audience.Scope.Setup
+  audience: Audience.Scope.Access
 };
 
 passport.use(new JwtStrategy(jwtOptions, (payload, done) => {
-  console.log('**********');
-  console.log(payload);
-  console.log('**********');
   return User.findByPk(payload.id)
     .then(user => done(null, user || false))
     .catch(err => done(err, false));
