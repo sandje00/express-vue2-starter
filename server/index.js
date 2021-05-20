@@ -1,5 +1,6 @@
 'use strict';
 
+require('express-async-errors');
 require('dotenv').config();
 const cors = require('cors');
 const database = require('./shared/database');
