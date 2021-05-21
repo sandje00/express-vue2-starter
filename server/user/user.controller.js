@@ -9,7 +9,7 @@ const {
   UNAUTHORIZED
 } = require('../shared/errors/status');
 const Audience = require('../shared/auth/audience');
-const HttpError = require('../shared/httpError');
+const HttpError = require('../shared/errors/httpError');
 const { UniqueConstraintError } = require('sequelize');
 const User = require('./user.model');
 

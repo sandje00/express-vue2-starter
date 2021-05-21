@@ -3,7 +3,7 @@
 const { auth: { secret } } = require('../../config');
 const Audience = require('./audience');
 const { BAD_REQUEST } = require('../errors/status');
-const HttpError = require('../httpError');
+const HttpError = require('../errors/httpError');
 const jwt = require('jsonwebtoken');
 
 const msg = {
