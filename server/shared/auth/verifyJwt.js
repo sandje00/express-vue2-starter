@@ -19,7 +19,7 @@ function verify(req, _, next) {
       throw new HttpError(BAD_REQUEST, msg.TOKEN_INVALID);
     }
     req.id = id;
-    next();
+    return next();
   } catch (err) {
     if (err instanceof jwt.JsonWebTokenError) {
       throw new HttpError(BAD_REQUEST, msg.TOKEN_INVALID);

@@ -4,7 +4,7 @@ const { authenticate } = require('../shared/auth');
 const authorize = require('../shared/auth/authorize');
 const ctrl = require('./user.controller');
 const router = require('express').Router();
-const verify = require('../shared/auth/verify');
+const verify = require('../shared/auth/verifyJwt');
 
 router
   .post('/register', ctrl.register)
