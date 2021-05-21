@@ -8,11 +8,12 @@ const {
 } = require('http-status-codes');
 const HttpError = require('../httpError');
 const Role = require('../../../common/role');
+const values = require('lodash/values');
 
 function authorize(role = Role.ADMIN, ...roles) {
   return ({ user }, _, next) => {
     if (!user) throw new HttpError(UNAUTHORIZED, 'Unauthorized');
-    const hasRole = arguments.find(role => user.role === role);
+    const hasRole = values(arguments).find(role => user.role === role);
     if (!hasRole) throw new HttpError(FORBIDDEN, 'Forbidden');
     return next();
   };
