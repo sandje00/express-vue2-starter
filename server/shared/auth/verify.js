@@ -11,7 +11,7 @@ const msg = {
   TOKEN_EXPIRED: 'Token is expired'
 };
 
-function verify(req, res, next) {
+function verify(req, _, next) {
   const token = req.params.token || req.body.token;
   try {
     const { id, aud } = jwt.verify(token, secret);

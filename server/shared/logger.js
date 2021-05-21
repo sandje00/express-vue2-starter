@@ -13,7 +13,7 @@ const logger = bunyan.createLogger({
   level: logLevel
 });
 
-const logRequests = (req, res, next) => {
+const logRequests = (req, _, next) => {
   logger.info({ req });
   next();
 };
