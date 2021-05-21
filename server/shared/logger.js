@@ -13,9 +13,9 @@ const logger = bunyan.createLogger({
   level: logLevel
 });
 
-const middleware = (req, res, next) => {
+const logRequests = (req, res, next) => {
   logger.info({ req });
   next();
 };
 
-module.exports = { logger, middleware };
+module.exports = { logger, logRequests };

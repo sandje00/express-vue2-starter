@@ -8,7 +8,7 @@ const database = require('./shared/database');
 const errorHandler = require('./shared/errors/errorHandler');
 const express = require('express');
 const helmet = require('helmet');
-const { middleware: logRequests } = require('./shared/logger');
+const { logRequests } = require('./shared/logger');
 const { port } = require('./config');
 const router = require('./router');
 
