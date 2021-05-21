@@ -2,7 +2,7 @@
 
 const { auth: { secret } } = require('../../config');
 const Audience = require('./audience');
-const { StatusCodes: BAD_REQUEST } = require('http-status-codes');
+const { BAD_REQUEST } = require('../errors/status');
 const HttpError = require('../httpError');
 const jwt = require('jsonwebtoken');
 

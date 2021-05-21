@@ -1,7 +1,7 @@
 'use strict';
 
 const Item = require('./item.model');
-const { StatusCodes: OK } = require('http-status-codes');
+const { OK } = require('../shared/errors/status');
 
 function getAll(req, res) {
   return Item.findAll().then(items => res.status(OK).send({ items }));

@@ -1,15 +1,13 @@
 'use strict';
 
 const {
-  StatusCodes: {
-    OK,
-    CREATED,
-    BAD_REQUEST,
-    UNAUTHORIZED,
-    NOT_FOUND,
-    CONFLICT
-  }
-} = require('http-status-codes');
+  BAD_REQUEST,
+  CONFLICT,
+  CREATED,
+  NOT_FOUND,
+  OK,
+  UNAUTHORIZED
+} = require('../shared/errors/status');
 const Audience = require('../shared/auth/audience');
 const HttpError = require('../shared/httpError');
 const { UniqueConstraintError } = require('sequelize');

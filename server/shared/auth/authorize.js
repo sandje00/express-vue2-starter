@@ -1,11 +1,6 @@
 'use strict';
 
-const {
-  StatusCodes: {
-    UNAUTHORIZED,
-    FORBIDDEN
-  }
-} = require('http-status-codes');
+const { FORBIDDEN, UNAUTHORIZED } = require('../errors/status');
 const HttpError = require('../httpError');
 const Role = require('../../../common/role');
 const values = require('lodash/values');
