@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="successMessage">{{ successMessage }}</div>
-    <!-- eslint-disable-next-line vue/valid-v-on -->
     <base-form v-else @submit="register">
       <form-field
         v-model.trim="username"
