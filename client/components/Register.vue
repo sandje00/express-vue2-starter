@@ -2,25 +2,25 @@
   <div>
     <div v-if="successMessage">{{ successMessage }}</div>
     <base-form v-else @submit="register">
-      <form-field
+      <base-field
         v-model.trim="username"
         name="Username"
         :rules="{ required: true }"
         type="text"
         placeholder="Username" />
-      <form-field
+      <base-field
         v-model.trim="email"
         name="E-mail"
         :rules="{ required: true, email: true }"
         type="text"
         placeholder="E-mail" />
-      <form-field
+      <base-field
         v-model="password"
         name="Password"
         :rules="{ required: true, min: { length: 8 } }"
         type="password"
         placeholder="Password" />
-      <form-field
+      <base-field
         v-model="repeat"
         name="Repeat password"
         :rules="{ required: true, confirmation: { target: '@Password' } }"
@@ -39,8 +39,8 @@
 
 <script>
 import BaseButton from './shared/BaseButton';
+import BaseField from './shared/BaseField';
 import BaseForm from './shared/BaseForm';
-import FormField from './shared/FormField';
 import pick from 'lodash/pick';
 // import usersApi from '../api/users';
 
@@ -67,6 +67,6 @@ export default {
         }); */
     }
   },
-  components: { BaseButton, BaseForm, FormField }
+  components: { BaseButton, BaseField, BaseForm }
 };
 </script>

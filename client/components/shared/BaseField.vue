@@ -1,40 +1,27 @@
 <template>
-  <div>
-    <div
-      :class="[rounded ? 'rounded': 'flat', fieldClass, { error }]"
-      class="form-field flex-h pa-s justify-space-between align-center">
-      <slot><base-input v-on="$listeners" v-bind="$attrs" class="stretch" /></slot>
-      <span v-if="icon" :class="icon" class="icon mt-xxs"></span>
-    </div>
-    <span class="error-message px-s">{{ error }}</span>
-  </div>
+  <validation-provider
+    v-slot="{ errors }"
+    :name="name"
+    :rules="rules"
+    class="form-field flex-h pa-s justify-space-between align-center">
+    <base-input v-on="$listeners" v-bind="$attrs" class="stretch" />
+    <span v-if="icon" :class="icon" class="icon mt-xxs"></span>
+    <span class="error-message px-s">{{ errors[0] }}</span>
+  </validation-provider>
 </template>
 
 <script>
 import BaseInput from './BaseInput';
+import { ValidationProvider } from 'vee-validate';
 
 export default {
-  name: 'base-field',
-  inheritAttrs: false,
+  name: 'form-field',
   props: {
-    icon: {
-      type: String,
-      default: ''
-    },
-    rounded: {
-      type: Boolean,
-      default: false
-    },
-    error: {
-      type: String,
-      default: ''
-    },
-    fieldClass: {
-      type: [String, Object, Array],
-      default: ''
-    }
+    name: { type: String, required: true },
+    rules: { type: [String, Object], required: true },
+    icon: { type: String, default: '' }
   },
-  components: { BaseInput }
+  components: { BaseInput, ValidationProvider }
 };
 </script>
 
