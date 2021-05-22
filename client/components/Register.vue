@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import BaseButton from './common/BaseButton';
-import BaseForm from './common/BaseForm';
-import FormField from './common/FormField';
+import BaseButton from './shared/BaseButton';
+import BaseForm from './shared/BaseForm';
+import FormField from './shared/FormField';
 import pick from 'lodash/pick';
 // import usersApi from '../api/users';
 
