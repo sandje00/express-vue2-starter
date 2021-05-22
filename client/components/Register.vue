@@ -7,22 +7,26 @@
         v-model.trim="username"
         name="Username"
         :rules="{ required: true }"
-        type="text" />
+        type="text"
+        placeholder="Username" />
       <form-field
         v-model.trim="email"
         name="E-mail"
         :rules="{ required: true, email: true }"
-        type="text" />
+        type="text"
+        placeholder="E-mail" />
       <form-field
         v-model="password"
         name="Password"
         :rules="{ required: true, min: { length: 8 } }"
-        type="password" />
+        type="password"
+        placeholder="Password" />
       <form-field
         v-model="repeat"
         name="Repeat password"
-        :rules="{ required: true, confirmation: { target: '@password' } }"
-        type="password" />
+        :rules="{ required: true, confirmation: { target: '@Password' } }"
+        type="password"
+        placeholder="Repeat password" />
       <span>{{ error }}</span>
       <base-button
         type="submit"

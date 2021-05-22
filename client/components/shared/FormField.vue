@@ -4,7 +4,7 @@
     :name="name"
     :rules="rules"
     class="form-field flex-h pa-s justify-space-between align-center">
-    <base-input v-on="$listeners" v-bind="$attrs" :placeholder="name" class="stretch" />
+    <base-input v-on="$listeners" v-bind="$attrs" class="stretch" />
     <span v-if="icon" :class="icon" class="icon mt-xxs"></span>
     <span class="error-message px-s">{{ errors[0] }}</span>
   </validation-provider>
