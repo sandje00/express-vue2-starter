@@ -5,7 +5,6 @@
     :rules="rules"
     class="form-field flex-h pa-s justify-space-between align-center">
     <base-input v-on="$listeners" v-bind="$attrs" class="stretch" />
-    <span v-if="icon" :class="icon" class="icon mt-xxs"></span>
     <span class="error-message px-s">{{ errors[0] }}</span>
   </validation-provider>
 </template>
@@ -18,8 +17,7 @@ export default {
   name: 'form-field',
   props: {
     name: { type: String, required: true },
-    rules: { type: [String, Object], required: true },
-    icon: { type: String, default: '' }
+    rules: { type: [String, Object], required: true }
   },
   components: { BaseInput, ValidationProvider }
 };
@@ -29,18 +27,10 @@ export default {
 .form-field {
   font-size: 0.875rem;
   background: none;
-
-  &.flat {
-    border-bottom: 1px solid var(--color-grey-light-700);
-  }
+  border-bottom: 1px solid var(--color-grey-light-700);
 
   &.error {
     border-color: var(--color-error);
-  }
-
-  &.rounded {
-    border: 1px solid var(--color-grey-light-700);
-    border-radius: 20px;
   }
 
   .input {

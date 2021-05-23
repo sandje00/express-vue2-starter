@@ -26,7 +26,7 @@
         :rules="{ required: true, confirmation: { target: '@Password' } }"
         type="password"
         placeholder="Repeat password" />
-      <span>{{ error }}</span>
+      <span class="msg mt-m">{{ error }}</span>
       <base-button
         type="submit"
         text="Register"
@@ -70,3 +70,14 @@ export default {
   components: { BaseButton, BaseField, BaseForm }
 };
 </script>
+
+<style lang="scss" scoped>
+.register-btn {
+  align-self: center;
+}
+
+.msg {
+  max-width: var(--measure-m);
+  text-align: center;
+}
+</style>
