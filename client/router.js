@@ -1,5 +1,6 @@
 import Auth from './components/auth';
 import Home from './components/Home';
+import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -12,7 +13,8 @@ const routes = [
     path: '/auth',
     component: Auth,
     children: [
-      { path: 'register', name: 'register', component: Register }
+      { path: 'register', name: 'register', component: Register },
+      { path: 'login', name: 'login', component: Login }
     ]
   }
 ];
