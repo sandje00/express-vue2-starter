@@ -3,9 +3,9 @@
     v-slot="{ errors }"
     :name="name"
     :rules="rules"
-    class="form-field flex-h pa-s justify-space-between align-center">
-    <base-input v-on="$listeners" v-bind="$attrs" class="stretch" />
-    <span class="error-message px-s">{{ errors[0] }}</span>
+    class="form-field flex-v pa-s justify-start">
+    <base-input v-on="$listeners" v-bind="$attrs" class="stretch" :class="{ error: errors[0] }" />
+    <span class="error-message pr-s">{{ errors[0] }}</span>
   </validation-provider>
 </template>
 
@@ -27,16 +27,15 @@ export default {
 .form-field {
   font-size: 0.875rem;
   background: none;
-  border-bottom: 1px solid var(--color-grey-light-700);
-
-  &.error {
-    border-color: var(--color-error);
-  }
 
   .input {
     width: 100%;
     font-size: inherit;
-    border: none;
+    border-bottom: 1px solid var(--color-grey-light-700);
+
+    &.error {
+      border-color: var(--color-error);
+    }
 
     &::placeholder {
       color: var(--color-grey-light-700);
