@@ -1,11 +1,20 @@
-import Register from './components/Register';
+import Auth from './components/auth';
+import Home from './components/Home';
+import Register from './components/auth/Register';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/register', component: Register }
+  { path: '/', name: 'home', component: Home },
+  {
+    path: '/auth',
+    component: Auth,
+    children: [
+      { path: 'register', name: 'register', component: Register }
+    ]
+  }
 ];
 
 export default new VueRouter({ mode: 'history', routes });

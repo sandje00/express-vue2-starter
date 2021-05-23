@@ -1,6 +1,7 @@
 <template>
   <div class="main flex-v justify-center align-center">
     <div class="container flex-v justify-center align-center pb-m">
+      <router-view />
     </div>
   </div>
 </template>
