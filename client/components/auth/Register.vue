@@ -38,11 +38,11 @@
 </template>
 
 <script>
+import api from '../../api/auth';
 import BaseButton from '../shared/BaseButton';
 import BaseField from '../shared/BaseField';
 import BaseForm from '../shared/BaseForm';
 import pick from 'lodash/pick';
-// import usersApi from '../api/users';
 
 export default {
   name: 'register-view',
@@ -56,15 +56,14 @@ export default {
   }),
   methods: {
     register() {
-      console.log(pick(this, ['username', 'email', 'password']));
-      /* usersApi
+      api
         .register(pick(this, ['username', 'email', 'password']))
         .then(({ data: { message } }) => {
           this.successMessage = message;
         })
         .catch(({ status, data: { error } }) => {
           this.error = status === 400 ? error : 'Something went wrong. Try again.';
-        }); */
+        });
     }
   },
   components: { BaseButton, BaseField, BaseForm }
@@ -79,5 +78,6 @@ export default {
 .msg {
   max-width: var(--measure-m);
   text-align: center;
+  align-self: center;
 }
 </style>

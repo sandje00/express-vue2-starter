@@ -4,6 +4,7 @@
     <span v-if="message" class="msg mt-xl">{{ message }}</span>
     <base-button
       v-else
+      @click="verifyEmail"
       class="mt-xl"
       text="Verify your account"
       primary
@@ -12,12 +13,27 @@
 </template>
 
 <script>
+import api from '../../api/auth';
+import BaseButton from '../shared/BaseButton';
+
 export default {
   name: 'verify-email',
   props: {
     token: { type: String, required: true }
   },
-  data: () => ({ message: '' })
+  data: () => ({ message: '' }),
+  methods: {
+    verifyEmail() {
+      api.verify(this.token)
+        .then(({ data: { message } }) => {
+          this.message = message;
+        })
+        .catch(({ data: { error } }) => {
+          this.message = error;
+        });
+    }
+  },
+  components: { BaseButton }
 };
 </script>
 
