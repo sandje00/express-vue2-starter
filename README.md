@@ -1,1 +1,1 @@
-# node-express-vue2-scaffold
+# Express Vue 2 starter
