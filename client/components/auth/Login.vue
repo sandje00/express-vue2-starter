@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-form>
+    <base-form @submit="login">
       <base-field
         v-model.trim="username"
         name="Username"
@@ -25,9 +25,11 @@
 </template>
 
 <script>
+import api from '../../api/auth';
 import BaseButton from '../shared/BaseButton';
 import BaseField from '../shared/BaseField';
 import BaseForm from '../shared/BaseForm';
+import pick from 'lodash/pick';
 
 export default {
   name: 'login-view',
@@ -36,6 +38,19 @@ export default {
     password: '',
     error: ''
   }),
+  methods: {
+    login() {
+      api
+        .login(pick(this, ['username', 'password']))
+        .then(({ data: { token } }) => {
+          localStorage.setItem('token', token);
+          this.$router.push({ name: 'home' });
+        })
+        .catch(({ data: { error } }) => {
+          this.error = error;
+        });
+    }
+  },
   components: { BaseButton, BaseField, BaseForm }
 };
 </script>
@@ -48,5 +63,6 @@ export default {
 .msg {
   max-width: var(--measure-m);
   text-align: center;
+  align-self: center;
 }
 </style>
